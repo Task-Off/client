@@ -6,7 +6,7 @@ class Header extends React.Component {
         
         return (
             <header>
-                <h1>
+                <h1 id='appTitle'>
                     {this.props.appTitle}
                 </h1>
             </header>

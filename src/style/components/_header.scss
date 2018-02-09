@@ -1,9 +1,15 @@
 header {
-    //background: darken($baseLight,50%);
     background: #6cf;
     color: ivory;
     height:3.5em;
     line-height:3.5em;
     text-align:center;
     width:100%;
+    padding-top: .3em;
+}
+
+#appTitle:after {
+    content:url('https://s3-us-west-2.amazonaws.com/paulamookerjee/rocketIcon.png');
+    padding-left: .3em;
+    padding-top: .3em;
 }
