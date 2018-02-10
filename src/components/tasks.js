@@ -4,6 +4,7 @@ import * as tasksActions from '../app/actions/tasks';
 import * as groupActions from '../app/actions/groups';
 import TaskForm from './task-form';
 import request from 'superagent';
+import {renderIf} from '../lib/__';
 
 let API = `${__API_URL__}`;
 
@@ -48,6 +49,7 @@ class TasksQueue extends React.Component {
 
     render() {
         
+        console.log('this.state in TASKS!!!!!!!!!!!', this.state)
         let groupName = this.state.groupName || '';
         let alias = this.state.groupAlias || '';
 
@@ -69,8 +71,9 @@ class TasksQueue extends React.Component {
                     />
                 </div>
                 <div className = 'taskQueue'>
-
-                    <h2 className='taskHeader' id='listHeader'>Click on a task and write your name when complete:</h2>
+                    {renderIf(this.props.tasks.length,
+                     <h2 className='taskHeader' id='listHeader'>Click to complete!</h2>
+                    )}
                     <ul className = "taskQueue">
                         {
                             this.props.tasks.map((task, i)=>
@@ -83,7 +86,7 @@ class TasksQueue extends React.Component {
                                         _id={task._id}
                                         groupID={this.state.groupID}
                                         userID = {this.props.user._id}
-                                        userName = {this.props.user.username.split('.').slice(1)}
+                                        userName = {this.props.user.firstName}
                                     />
                                 </li>
                             )

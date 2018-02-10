@@ -4,13 +4,10 @@ footer {
     line-height:2em;
     text-align:center;
     width:100%;
-    position:absolute;
-    right:0;
-    left:0;
-    bottom: 0;
     height:60px;  
     text-align: center;
     background: #5BC5FF;
-    display: flex;
+    position: fixed;
+    bottom: 0;
     justify-content: center;
 }

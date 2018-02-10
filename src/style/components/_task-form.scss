@@ -104,3 +104,13 @@ form#listForm {
 #checkbox {
     margin-top: 1.2em;
 }
+
+@media only screen and (max-device-width: 420px) {
+    form#listForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: right;
+    }
+}
+

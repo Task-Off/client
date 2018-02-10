@@ -41,7 +41,7 @@ class GroupForm extends React.Component {
     return [
       <form autoComplete="off" key={nameForm} className="groupAdd" onSubmit={this.handleSubmitName}>			
       <label className='groupCreateLabel'>
-        <span className='grpLabel'>Create a new group!</span>
+        <span id='createGroup' className='grpLabel'>Create a new group!</span>
         <input 
           type="text"
           name="groupName"
