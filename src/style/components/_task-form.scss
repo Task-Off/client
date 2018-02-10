@@ -111,6 +111,21 @@ form#listForm {
         flex-direction: column;
         justify-content: center;
         align-items: right;
+        padding-bottom: 1.3em;
     }
+
+    .task-form-div form .listInput {
+        width: 10em;
+    }
+
+    .newInput {
+        width: 8em;
+    }
+
+    a#deleteTask:before {
+        padding-bottom: 2.3em;
+    }
+
+
 }
 

@@ -49,7 +49,6 @@ class TasksQueue extends React.Component {
 
     render() {
         
-        console.log('this.state in TASKS!!!!!!!!!!!', this.state)
         let groupName = this.state.groupName || '';
         let alias = this.state.groupAlias || '';
 
@@ -81,8 +80,10 @@ class TasksQueue extends React.Component {
                                     <a id='deleteTask' href="javascript:;" title='Delete task'
                                       onClick={()=>this.props.taskDelete(task)}></a>
                                     <TaskForm handle = {this.props.taskUpdate} 
+                                        task = {task}
                                         name={task.name}
                                         completed={task.completed}
+                                        completedBy={task.completedBy}
                                         _id={task._id}
                                         groupID={this.state.groupID}
                                         userID = {this.props.user._id}

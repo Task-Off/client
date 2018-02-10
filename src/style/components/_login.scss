@@ -15,17 +15,18 @@ a:visited {
 }
 
 a#google:after {
-
-  font-family: FontAwesome;  
-  content: "\f0d4";
-  color: #5BC5FF;
-  font-size: 23px;
+  content: url('https://s3-us-west-2.amazonaws.com/paulamookerjee/googleIcon.jpg');
   padding-left: .4em;
-  font-weight: bold;
-  text-decoration: inherit
+
+  // font-family: FontAwesome;  
+  // content: "\f0d4";
+  // color: #FDCF00;
+  // font-size: 23px;
+  // font-weight: bold;
+  // text-decoration: inherit
 }
 
 a#google {
-  padding-top: 5em;
   font-size: 1.3em;
+  padding-left: 2em;
 }
