@@ -1,10 +1,12 @@
 nav {
-    //background:darken($baseLight,80%);;
     background: grey;
     color: black;
     height:2em;
     line-height:2em;
     width: 100%;
+    position: fixed;
+    top:55px;
+    margin-bottom: 2em;
    
     ul {
         display:flex;

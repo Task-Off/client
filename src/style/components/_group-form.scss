@@ -1,7 +1,7 @@
 .grpLabel {
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  padding: .6em;
 }
 
 .groupCreateLabel {
@@ -29,4 +29,8 @@ button {
   border: none;
   border-radius: 5px;
   outline: none;
+}
+
+#createGroup {
+  //padding-top: 2em;
 }

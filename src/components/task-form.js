@@ -1,4 +1,7 @@
 import React from 'react';
+import request from 'superagent';
+
+let API = `${__API_URL__}`;
 
 const renderIf = (test, component, alternative) => {
   return test ? component : alternative
@@ -12,17 +15,36 @@ class TaskForm extends React.Component{
      completed:this.props.completed || false,
      groupID:this.props.groupID || '',
      _id:this.props._id || '',
-     completedBy:this.props.userID || '',
-     initials:this.props.userName
+     completedBy:this.props.completedBy || '',
+     userName:this.props.userName,
+     completedByName: this.props.completedByName || ''
    }
 
    this.handleSubmit = this.handleSubmit.bind(this);
    this.handleChange = this.handleChange.bind(this);
    this.handleOnChange = this.handleOnChange.bind(this);
+   this.getCompletedByName = this.getCompletedByName.bind(this);
  }
 
- componentWillReceiveProps(props){
-   this.setState(props)
+ componentWillMount() {
+    if(this.state.completed) {
+      this.getCompletedByName(this.state.completedBy);
+    }
+ }
+
+ componentWillReceiveProps(props){ 
+    if(this.state.completed) {
+      this.getCompletedByName(this.state.completedBy);
+    }
+ }
+
+ getCompletedByName(id) {
+    request.get(`${API}/user/firstname/${id}`) 
+      .then(res => {
+        console.log('res.text is ', res.text)
+        let completedByName = res.text;
+        this.setState({['completedByName']: completedByName});
+      })
  }
 
  handleChange(e){
@@ -38,27 +60,19 @@ class TaskForm extends React.Component{
  }
 
  handleOnChange(e){
-   let task = Object.assign(this.state, {completed:!this.state.completed, completedBy:this.props.userID})
+   console.log('this.props.userID is ', this.props.userID)
+   let task = Object.assign(this.state, {
+     completed:!this.state.completed,
+     completedBy:this.props.userID,
+     name: this.state.name
+    })
    this.setState({task}, () => {
       this.props.handle(this.state);
    })
-   let input = document.createElement('input');
-   input.value = this.state.initials;
-   input.id = this.state._id;
-
-   if (this.state.completed){
-      let input = document.createElement('input');
-      input.value = this.state.initials;
-      input.id = this.state._id
-      document.getElementById(`checkedTest${this.state._id}`).appendChild(input);
-   }
-   else{
-      document.getElementById(input.id).remove();
-   }
-   
  }
  
  render(){
+   console.log('@@@@@@@@this.state is ', this.state)
    return(
      <div className='task-form-div'>
        <form autoComplete="off" className='newTasks' id={this.props.name ? "listForm" : null}
@@ -82,6 +96,15 @@ class TaskForm extends React.Component{
                     onChange= {this.handleOnChange} 
                     checked = {this.state.completed}  
               />
+              {
+                renderIf(this.state.completed,
+                  <input
+                    type = "text"
+                    value = {this.state.completedByName}
+                    />,
+                    null
+                )
+              }
             </div>
            )
          }
