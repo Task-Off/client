@@ -45,6 +45,7 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 5em;
 }
 
 a.unsubscribe:after {
@@ -124,5 +125,5 @@ a#deleteTask:before {
     justify-content: center;
     padding-bottom: 1.4em;
     font-size: 1em;
-    width: 12em;
+ 
 }

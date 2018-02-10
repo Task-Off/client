@@ -14,8 +14,11 @@ body {
     background-image: url('https://s3-us-west-2.amazonaws.com/paulamookerjee/rocket_large.png');
     background-size: cover; 
     background-repeat: 0 0 no-repeat;
-    width: 100%;
-    min-height: 100%;
+    
+    //background-repeat:no-repeat;
+    //  background-size:contain;
+    //  background-position:center;
+    //background: #97E0EF;
     color: black;
     font-family: 'Baumans';
     &:after {
@@ -37,13 +40,15 @@ main {
     padding: 2em;
 }
 
-@media only screen and (max-device-width: 650px) {
+@media only screen and (max-device-width: 1050px) {
     body {   
       background-image: url('https://s3-us-west-2.amazonaws.com/paulamookerjee/rocket_small.png');
       background-size: cover; 
       background-repeat: 0 0 no-repeat;
-      width: 100%;
-      min-height: 100%;    
+      
+      //background-repeat:no-repeat;
+    //    background-size:contain;
+    //    background-position:center;   
     }
 }
 
@@ -55,11 +60,13 @@ main {
 
 @media only screen and (min-device-width: 1050px) {
     body {   
-      background-image: url('https://s3-us-west-2.amazonaws.com/paulamookerjee/rocket_huge2.png');  
+      background-image: url('https://s3-us-west-2.amazonaws.com/paulamookerjee/rocket_huge2.png'); 
       background-size: cover; 
       background-repeat: 0 0 no-repeat;
-      width: 100%;
-      min-height: 100%;
+       
+      //background-repeat:no-repeat;
+    //   background-size:contain;
+    //   background-position:center;
     }
 
     form#listForm {
