@@ -4,6 +4,7 @@ import * as tasksActions from '../app/actions/tasks';
 import * as groupActions from '../app/actions/groups';
 import TaskForm from './task-form';
 import request from 'superagent';
+// import Stats from './stats'
 
 let API = `${__API_URL__}`;
 
@@ -28,7 +29,7 @@ class TasksQueue extends React.Component {
         this.getCreator(this.state.groupID);
     }
 
-    componentWillReceiveProps(props){
+    componentWillReceiveProps(props, nextProps){
         if(props) this.setState(this.props.tasks);
     }
 
@@ -50,6 +51,8 @@ class TasksQueue extends React.Component {
         
         let groupName = this.state.groupName || '';
         let alias = this.state.groupAlias || '';
+
+        console.log("GROUP ID::::::", this.state.groupID);
 
         return (
             <div className = 'queueView'>
@@ -83,14 +86,13 @@ class TasksQueue extends React.Component {
                                         _id={task._id}
                                         groupID={this.state.groupID}
                                         userID = {this.props.user._id}
-                                        userName = {this.props.user.username.split('.').slice(1)}
+                                        userName = {this.props.user.firstName}
                                     />
                                 </li>
                             )
                         }
                     </ul>
-                </div>
-
+                </div>        
             </div>
         )
     }
