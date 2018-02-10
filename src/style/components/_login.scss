@@ -18,9 +18,13 @@ a#google:after {
 
   font-family: FontAwesome;  
   content: "\f0d4";
-  color: orange;
-  font-size: large;
-  padding-left: 1em;
+  color: #5BC5FF;
+  font-size: 23px;
+  padding-left: .4em;
   font-weight: bold;
   text-decoration: inherit
+}
+
+a#google {
+  font-size: 1.3em;
 }
