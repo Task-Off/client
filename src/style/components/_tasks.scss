@@ -127,3 +127,17 @@ a#deleteTask:before {
     font-size: 1em;
  
 }
+
+@media only screen and (max-device-width: 420px) {
+    a#deleteTask:before {
+        content: "\f00d";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        color: blue;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+}
