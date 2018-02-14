@@ -24,12 +24,13 @@ form {
     form{
         .newInput{
             margin-bottom: .5em;
-            padding:1em; 
-            width:15em; 
+            padding: .5em .4em; 
+            width:20em; 
             border-radius:25px; 
             font-size:1em;
-            line-height: 2.5em;
-            text-align: left;            
+            text-align: center; 
+            background: darken($baseLight,15%);
+            
         }
 
         .listInput{
@@ -63,8 +64,9 @@ form {
             text-decoration: none;
             background: darken($baseLight, 15%);
             height: 1.3em;
+            border-radius:10px;              
             text-align: center;    
-            font-color: black;        
+            color: black;        
         }
         #checkBox{
             margin-left: 1em;
@@ -105,27 +107,4 @@ form#listForm {
     margin-top: 1.2em;
 }
 
-@media only screen and (max-device-width: 420px) {
-    form#listForm {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: right;
-        padding-bottom: 1.3em;
-    }
-
-    .task-form-div form .listInput {
-        width: 10em;
-    }
-
-    .newInput {
-        width: 8em;
-    }
-
-    a#deleteTask:before {
-        padding-bottom: 2.3em;
-    }
-
-
-}
 
