@@ -59,8 +59,6 @@ class TasksQueue extends React.Component {
         let alias = this.state.groupAlias || '';
 
         let completedTasks = (task) => { return task.completed === true; }
-        let test = this.props.tasks.find(completedTasks);
-        console.log('test is ', test)
         let display = this.props.tasks.find(completedTasks) ? 'completedView' : 'queueView';
 
         return (
