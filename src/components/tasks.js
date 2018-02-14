@@ -24,14 +24,6 @@ class TasksQueue extends React.Component {
         }
 
         this.state = this.initialState;
-        //{
-            // tasks: this.props.tasks || [],
-            // groupID:this.props.location.pathname.slice(7, 31),
-            // groupName: this.props.location.pathname.slice(32).split('/')[0],
-            // groupAlias: this.props.location.pathname.match(/[^/]*$/gi)[0],
-            // buttonName: this.props.buttonName || '',
-            // buttonText: this.props.buttonText || ''
-        //}
         this.getCreator = this.getCreator.bind(this);
         this.routeToGroups = this.routeToGroups.bind(this);
     }
