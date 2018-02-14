@@ -12,6 +12,7 @@ main{
         flex-direction:column;
         align-items: center;
         justify-content: space-around;
+        margin-left: 5em;
         
         .inputDiv{
             display: flex;
@@ -39,6 +40,40 @@ main{
         }
         
     }
+}
+
+.completedView {
+    margin-left: 6em; 
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-around;
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        #groupName {
+            display: flex;
+            justify-content: center;
+            font-size: 1.4em;
+            padding-bottom: .4em;
+        }
+    }
+    .taskQueue{
+        ul{
+            margin-top: 1em;
+            li{
+                display: flex;
+                flex-direction: row;
+                div{
+                    margin-left:1em;   
+                }
+            }
+        }
+    }
+    
 }
 
 .title {
@@ -128,6 +163,20 @@ a#deleteTask:before {
  
 }
 
+div.taskQueue {
+    display: flex;
+    flex-direction: column;
+}
+
+form#uncompleted {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: right;    
+}
+
+
 @media only screen and (max-device-width: 420px) {
     a#deleteTask:before {
         content: "\f00d";
@@ -139,5 +188,69 @@ a#deleteTask:before {
         font-size: 18px;
         display: flex;
         align-items: center;
+        margin-bottom: 2.5em;
+    }
+
+    input#completedName {
+        width: 10em;
+        padding-left: .5em;
+    }
+
+    #checkbox {
+        margin-right: .3em;
+    }
+
+    form#listForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: right;
+        padding-bottom: 1.3em;
+        font-size: 12px;
+    }
+
+    .task-form-div form .listInput {
+        width: 15em;
+        font-size: 12px;
+    }
+
+    .task-form-div form .newInput {
+        width: 16em;
+        font-size: 12px;
+        padding: .3em .4em;
+    }
+
+    .completedView {
+        margin-left: 2em; 
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: space-around;
+        
+        .inputDiv{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+    
+            #groupName {
+                display: flex;
+                justify-content: center;
+                font-size: 1.4em;
+                padding-bottom: .4em;
+            }
+        }
+        .taskQueue{
+            ul{
+                margin-top: 1em;
+                li{
+                    display: flex;
+                    flex-direction: row;
+                    div{
+                        margin-left:1em;   
+                    }
+                }
+            }
+        }
+        
     }
 }

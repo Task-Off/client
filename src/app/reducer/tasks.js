@@ -18,8 +18,6 @@ export default (state=initialState, action) => {
     case 'DELETE_TASK':
         return state.filter(task => task._id !== payload._id); 
     
-        return {group: payload} || intialState;
-
     case 'RESET':
         return initialState;
 

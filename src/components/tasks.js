@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as tasksActions from '../app/actions/tasks';
 import * as groupActions from '../app/actions/groups';
 import TaskForm from './task-form';
+import TaskItem from './task-item';
 import request from 'superagent';
 import {renderIf} from '../lib/__';
 
@@ -12,7 +13,8 @@ class TasksQueue extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
+
+        this.initialState = {
             tasks: this.props.tasks || [],
             groupID:this.props.location.pathname.slice(7, 31),
             groupName: this.props.location.pathname.slice(32).split('/')[0],
@@ -20,6 +22,16 @@ class TasksQueue extends React.Component {
             buttonName: this.props.buttonName || '',
             buttonText: this.props.buttonText || ''
         }
+
+        this.state = this.initialState;
+        //{
+            // tasks: this.props.tasks || [],
+            // groupID:this.props.location.pathname.slice(7, 31),
+            // groupName: this.props.location.pathname.slice(32).split('/')[0],
+            // groupAlias: this.props.location.pathname.match(/[^/]*$/gi)[0],
+            // buttonName: this.props.buttonName || '',
+            // buttonText: this.props.buttonText || ''
+        //}
         this.getCreator = this.getCreator.bind(this);
         this.routeToGroups = this.routeToGroups.bind(this);
     }
@@ -27,10 +39,11 @@ class TasksQueue extends React.Component {
         let groupID = this.props.location.pathname.slice(7, 31)
         this.props.tasksInitialize(groupID);
         this.getCreator(this.state.groupID);
+        this.setState(this.initialState);
     }
 
     componentWillReceiveProps(props){
-        if(props) this.setState(this.props.tasks);
+        if(props) this.setState(this.props);
     }
 
     getCreator(groupID) {
@@ -47,13 +60,19 @@ class TasksQueue extends React.Component {
         this.props.remove(this.props.user._id, this.state.groupID);
     }
 
+
     render() {
         
         let groupName = this.state.groupName || '';
         let alias = this.state.groupAlias || '';
 
+        let completedTasks = (task) => { return task.completed === true; }
+        let test = this.props.tasks.find(completedTasks);
+        console.log('test is ', test)
+        let display = this.props.tasks.find(completedTasks) ? 'completedView' : 'queueView';
+
         return (
-            <div className = 'queueView'>
+            <div className = {display}>
                 <div className='inputDiv'>
                     <div className='title'>
                         <h2 id='groupName'>Team {groupName}</h2>
@@ -64,7 +83,7 @@ class TasksQueue extends React.Component {
                     </div>
                     <h4 id='alias' title='Code name to join group'>Alias: {alias}</h4>
 
-                    <TaskForm handle = {this.props.taskCreate}
+                    <TaskForm taskCreate = {this.props.taskCreate}
                                 button = "Save Task"
                                 groupID={this.state.groupID}
                     />
@@ -73,14 +92,14 @@ class TasksQueue extends React.Component {
                     {renderIf(this.props.tasks.length,
                      <h2 className='taskHeader' id='listHeader'>Click to complete!</h2>
                     )}
+                    
                     <ul className = "taskQueue">
                         {
                             this.props.tasks.map((task, i)=>
                                 <li key = {i} >
                                     <a id='deleteTask' href="javascript:;" title='Delete task'
                                       onClick={()=>this.props.taskDelete(task)}></a>
-                                    <TaskForm handle = {this.props.taskUpdate} 
-                                        task = {task}
+                                    <TaskItem handle = {this.props.taskUpdate} 
                                         name={task.name}
                                         completed={task.completed}
                                         completedBy={task.completedBy}

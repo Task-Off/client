@@ -38,7 +38,6 @@ class Groups extends React.Component {
     let groupID = e.target.dataset['id'];
     let name = e.target.dataset['name'];
     let alias = e.target.dataset['alias'];    
-    console.log('alias is ', alias)
     this.props.toggleView();
     this.props.switchRoute(`/queue/${groupID}/${name}/${alias}`);
   }
