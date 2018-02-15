@@ -56,6 +56,7 @@ class GroupForm extends React.Component {
       <label className='groupCreateLabel'>
         <span className='grpLabel'>Join a group!</span>
         <input 
+          id="joinGroup"
           type="text"
           name="alias"
           placeholder="Enter group alias"

@@ -44,7 +44,6 @@ export const remove = (id, groupID) => (dispatch) => {
     .set('Authorization', `Bearer ${token}`)
     .send({id: id})
     .then(res => {
-      console.log('!!!!DELETE!!! res.body is ', res.body);
       dispatch(updateUser(res.body))
     })
     .catch(console.error);
